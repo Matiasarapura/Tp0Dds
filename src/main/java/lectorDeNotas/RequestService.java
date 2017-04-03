@@ -6,6 +6,8 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.WebResource.Builder;
 import com.sun.jersey.api.client.*;
+import java.lang.reflect.Modifier;
+
 
 public class RequestService {
 	 private Client client;
