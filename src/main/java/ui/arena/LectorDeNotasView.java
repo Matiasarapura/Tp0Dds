@@ -38,13 +38,13 @@ public class LectorDeNotasView extends MainWindow<LectorDeNotasViewModel> {
 		    Panel columnaDerecha = new Panel(mainPanel);
 		    columnaDerecha.setLayout(new VerticalLayout());
 		    new Label(columnaDerecha).setText("Legajo");
-		    new TextBox(columnaIzquierda).bindValueToProperty("code");
+		    new TextBox(columnaDerecha).bindValueToProperty("code");
 		    new Label(columnaDerecha).setText("Nombre");
-		    new TextBox(columnaIzquierda).bindValueToProperty("first_name");
+		    new TextBox(columnaDerecha).bindValueToProperty("first_name");
 		    new Label(columnaDerecha).setText("Apellido");
-		    new TextBox(columnaIzquierda).bindValueToProperty("last_name");
+		    new TextBox(columnaDerecha).bindValueToProperty("last_name");
 		    new Label(columnaDerecha).setText("Usuario GitHub");
-		    new TextBox(columnaIzquierda).bindValueToProperty("github_user");
+		    new TextBox(columnaDerecha).bindValueToProperty("github_user");
 			    
 		  }
 
