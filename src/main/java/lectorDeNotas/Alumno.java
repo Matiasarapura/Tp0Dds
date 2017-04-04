@@ -5,7 +5,7 @@ import java.util.List;
 
 
 public class Alumno {
-	private int code = 0;
+	private int code;
 	private String first_name;
 	private String last_name;
 	private String github_user;
