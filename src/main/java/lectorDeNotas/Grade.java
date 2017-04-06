@@ -1,6 +1,6 @@
 package lectorDeNotas;
 
-public class grade {
+public class Grade {
 	private int id;
 	private int value;
 	private String created_at;

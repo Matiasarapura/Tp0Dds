@@ -2,16 +2,19 @@ package lectorDeNotas;
 import java.util.ArrayList;
 import java.util.List;
 
-public class assigment {
-	private int id;
+import org.uqbar.commons.utils.Observable;
+
+@Observable
+public class Assignment {
+	private String id;
 	private String title;
 	private String description;
-	private List<grade> grades = new ArrayList<>();
+	private List<Grade> grades = new ArrayList<>();
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getTitle() {
@@ -26,10 +29,10 @@ public class assigment {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public List<grade> getGrades() {
+	public List<Grade> getGrades() {
 		return grades;
 	}
-	public void setGrades(List<grade> grades) {
+	public void setGrades(List<Grade> grades) {
 		this.grades = grades;
 	}
 	

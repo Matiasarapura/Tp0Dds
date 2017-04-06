@@ -9,7 +9,7 @@ public class Alumno {
 	private String first_name;
 	private String last_name;
 	private String github_user;
-	private List<assigment> assigments= new ArrayList<>();
+	private List<Assignment> assigments= new ArrayList<>();
 	
 	
 	
@@ -38,10 +38,10 @@ public class Alumno {
 	public void setGithub_user(String github_user) {
 		this.github_user = github_user;
 	}
-	public List<assigment> getAssigments() {
+	public List<Assignment> getAssigments() {
 		return assigments;
 	}
-	public void setAssigments(List<assigment> assigments) {
+	public void setAssigments(List<Assignment> assigments) {
 		this.assigments = assigments;
 	}
 	
