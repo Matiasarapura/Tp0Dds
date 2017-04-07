@@ -10,7 +10,28 @@ public class Assignment {
 	private String title;
 	private String description;
 	private List<Grade> grades = new ArrayList<>();
+	private Boolean aprobada; 
+	private String lastGrade;
+
 	
+	public void initLastGrade(){
+		this.setLastGrade(this.getLastGrade());
+		this.setAprobada(false);
+	}
+	
+	public String getLastGrade(){
+		if(grades.size() == 0)
+			return "Sin notas aun";
+		else
+			return grades.get(grades.size()-1).getValue(); 
+		 
+	}
+
+	public void setLastGrade(String lastGrade) {
+		this.lastGrade = lastGrade;
+	}
+
+
 	public String getId() {
 		return id;
 	}
@@ -34,6 +55,18 @@ public class Assignment {
 	}
 	public void setGrades(List<Grade> grades) {
 		this.grades = grades;
+	}
+
+	public Boolean getAprobada() {
+		this.aprobada = this.esAprobada(this.getLastGrade()); 
+		return aprobada;
+	}
+
+	public void setAprobada(Boolean aprobada) {
+		this.aprobada = aprobada;
+	}
+	public Boolean esAprobada(String oneGrade){
+		return false;
 	}
 	
 }

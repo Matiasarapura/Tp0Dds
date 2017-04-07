@@ -1,22 +1,22 @@
 package lectorDeNotas;
 
 public class Grade {
-	private int id;
-	private int value;
+	private String id;
+	private String value;
 	private String created_at;
 	private String updated_at;
 	
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
-	public int getValue() {
+	public String getValue() {
 		return value;
 	}
-	public void setValue(int value) {
+	public void setValue(String value) {
 		this.value = value;
 	}
 	public String getCreated_at() {
@@ -31,4 +31,8 @@ public class Grade {
 	public void setUpdated_at(String updated_at) {
 		this.updated_at = updated_at;
 	}
+	
+	
+	
+
 }

@@ -9,30 +9,31 @@ import lectorDeNotas.RequestService;
 import lectorDeNotas.Alumno;
 import lectorDeNotas.Assignment;
 import lectorDeNotas.Data;
+import lectorDeNotas.Grade;
 
 @Observable
 public class LectorDeNotasViewModel {
 	
 	private String token;
 	
+	//Alumno
 	private int code;
 	private String first_name;
 	private String last_name;
 	private String github_user;
 	
+	//Asignaciones
 	private Data assignmentsData;
 	private List<Assignment> assignments = new ArrayList<>();
-	
 	private String id;
 	private String title;
 	private String description;
+	private String lastGrade;
+	private Boolean aprobada;
+
 	
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
+	
+	//Otros
 	private Alumno unAlumno = new Alumno();
 	private RequestService oneService = new RequestService();
 	
@@ -46,7 +47,7 @@ public class LectorDeNotasViewModel {
 	public void obtenerNotas(){
 		this.assignmentsData = this.oneService.getAssignments(token);
 		this.assignments = this.assignmentsData.getAssignments();
-	    
+		this.assignments.forEach(one -> one.initLastGrade());
 	}
 	
 
@@ -127,6 +128,11 @@ public class LectorDeNotasViewModel {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	
 }

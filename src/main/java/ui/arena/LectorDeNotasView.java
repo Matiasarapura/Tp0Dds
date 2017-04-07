@@ -1,7 +1,9 @@
 package ui.arena;
 
 import java.awt.Color;
+import java.util.List;
 
+import org.mockito.cglib.core.Transformer;
 import org.uqbar.arena.layout.HorizontalLayout;
 import org.uqbar.arena.layout.VerticalLayout;
 import org.uqbar.arena.widgets.Button;
@@ -15,6 +17,7 @@ import lectorDeNotas.Data;
 
 import org.uqbar.arena.widgets.tables.Column;
 import org.uqbar.arena.widgets.tables.Table;
+import org.uqbar.arena.widgets.tables.labelprovider.BackgroundProvider;
 
 public class LectorDeNotasView extends MainWindow<LectorDeNotasViewModel> {
 
@@ -80,13 +83,22 @@ public class LectorDeNotasView extends MainWindow<LectorDeNotasViewModel> {
 			.bindContentsToProperty("description");
 			
 			
+			new Column<Assignment>(table) 
+			.setTitle("Ultima Nota")
+			.setFixedSize(200)
+			.bindContentsToProperty("lastGrade");
 			
-		    
+			new Column<Assignment>(table) 
+			.setTitle("Aprobada")
+			.setFixedSize(200)
+			.bindContentsToProperty("aprobada");
+			
+			
+			
+			
+
 		  
 		  }
-		  
-		  
-		
 		
 		  
 		  public static void main(String[] args) {

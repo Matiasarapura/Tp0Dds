@@ -22,6 +22,7 @@ public class RequestService {
 	 private static final String RESOURCESTUDENT = "student";
 	 private static final String RESOURSEASSIGMENTS = "student/assignments";
 	 private static final String PRETOKEN = "Bearer ";
+	 private static final String UNOCUALQUIERA = "{\"assignments\":[{\"id\":1,\"title\":\"TPA1\",\"description\":\"Entrega 1 del TP Anual\",\"grades\":[{\"id\": 1,\"value\": 2,\"created_at\": \"2017-03-25T13:56:07.526Z\",\"updated_at\": \"2017-03-25T13:56:07.526Z\"},{\"id\": 2,\"value\": 7,\"created_at\": \"2017-03-25T13:56:07.595Z\",\"updated_at\": \"2017-03-25T13:56:07.595Z\"}]},{\"id\":2,\"title\":\"TPA2\",\"description\":\"Entrega 2 del TP Anual\",\"grades\":[{\"id\": 1,\"value\": 2,\"created_at\": \"2017-03-25T13:56:07.526Z\",\"updated_at\": \"2017-03-25T13:56:07.526Z\"},{\"id\": 2,\"value\": 7,\"created_at\": \"2017-03-25T13:56:07.595Z\",\"updated_at\": \"2017-03-25T13:56:07.595Z\"}]}]}";
 	//Inicializacion del cliente
 	public RequestService() {
 	        this.client = Client.create();
