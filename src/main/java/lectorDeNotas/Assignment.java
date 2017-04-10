@@ -1,5 +1,6 @@
 package lectorDeNotas;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.uqbar.commons.utils.Observable;
@@ -12,11 +13,12 @@ public class Assignment {
 	private List<Grade> grades = new ArrayList<>();
 	private Boolean aprobada; 
 	private String lastGrade;
+	private final static List<String> APROBADAS = Arrays.asList("6","7","8","9","10","B","B+","MB","E");
 
 	
 	public void initLastGrade(){
 		this.setLastGrade(this.getLastGrade());
-		this.setAprobada(false);
+		this.setAprobada(this.esAprobada(this.getLastGrade()));
 	}
 	
 	public String getLastGrade(){
@@ -66,7 +68,7 @@ public class Assignment {
 		this.aprobada = aprobada;
 	}
 	public Boolean esAprobada(String oneGrade){
-		return false;
+		return APROBADAS.contains(oneGrade);
 	}
 	
 }
