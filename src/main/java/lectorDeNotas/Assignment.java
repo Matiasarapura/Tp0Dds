@@ -20,20 +20,27 @@ public class Assignment {
 		this.setLastGrade(this.getLastGrade());
 		this.setAprobada(this.esAprobada(this.getLastGrade()));
 	}
-	
 	public String getLastGrade(){
 		if(grades.size() == 0)
 			return "Sin notas aun";
 		else
 			return grades.get(grades.size()-1).getValue(); 
-		 
 	}
+	public Boolean esAprobada(String oneGrade){
+		return APROBADAS.contains(oneGrade);
+	}
+	public Boolean getAprobada() {
+		this.aprobada = this.esAprobada(this.getLastGrade()); 
+		return aprobada;
+	}
+	
+	
 
+/****************** Otros Setters y Getters **************************/
 	public void setLastGrade(String lastGrade) {
 		this.lastGrade = lastGrade;
 	}
-
-
+	
 	public String getId() {
 		return id;
 	}
@@ -58,18 +65,10 @@ public class Assignment {
 	public void setGrades(List<Grade> grades) {
 		this.grades = grades;
 	}
-
-	public Boolean getAprobada() {
-		this.aprobada = this.esAprobada(this.getLastGrade()); 
-		return aprobada;
-	}
-
 	public void setAprobada(Boolean aprobada) {
 		this.aprobada = aprobada;
 	}
-	public Boolean esAprobada(String oneGrade){
-		return APROBADAS.contains(oneGrade);
-	}
+	
 	
 }
 
