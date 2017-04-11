@@ -1,4 +1,5 @@
 package lectorDeNotas;
+
 import javax.ws.rs.core.MediaType;
 
 import com.sun.jersey.api.client.Client;
@@ -23,49 +24,60 @@ public class RequestService {
 	private static final String RESOURSEASSIGMENTS = "student/assignments";
 	private static final String PRETOKEN = "Bearer ";
 	private static final String UNOCUALQUIERA = "{\"assignments\":[{\"id\":1,\"title\":\"TPA1\",\"description\":\"Entrega 1 del TP Anual\",\"grades\":[{\"id\": 1,\"value\": 2,\"created_at\": \"2017-03-25T13:56:07.526Z\",\"updated_at\": \"2017-03-25T13:56:07.526Z\"},{\"id\": 2,\"value\": 7,\"created_at\": \"2017-03-25T13:56:07.595Z\",\"updated_at\": \"2017-03-25T13:56:07.595Z\"}]},{\"id\":2,\"title\":\"TPA2\",\"description\":\"Entrega 2 del TP Anual\",\"grades\":[{\"id\": 1,\"value\": 2,\"created_at\": \"2017-03-25T13:56:07.526Z\",\"updated_at\": \"2017-03-25T13:56:07.526Z\"},{\"id\": 2,\"value\": 7,\"created_at\": \"2017-03-25T13:56:07.595Z\",\"updated_at\": \"2017-03-25T13:56:07.595Z\"}]}]}";
-
+	private Gson gson = new Gson();
 	// Inicializacion del cliente
 	public RequestService() {
 		this.client = Client.create();
 	}
 
-	public Alumno getStudent(String token) {
-		WebResource recurso = this.client.resource(API_NOTITAS).path(RESOURCESTUDENT);
+	public ClientResponse getResponse(String token, String oneResourse) {
+		WebResource recurso = this.client.resource(API_NOTITAS).path(oneResourse);
 		Builder autorization = recurso.header("Authorization", PRETOKEN + token);
 		WebResource.Builder builder = autorization.accept(MediaType.APPLICATION_JSON);
 		ClientResponse response = builder.get(ClientResponse.class);
-		Alumno unAlumno = this.getStudentFromJson(response);
-		return unAlumno;
+		return response;
+	}
+	public void putResponse(String token, String oneResourse, String strWrite) {
+		WebResource recurso = this.client.resource(API_NOTITAS).path(oneResourse);
+		Builder autorization = recurso.header("Authorization", PRETOKEN + token);
+		WebResource.Builder builder = autorization.accept(MediaType.APPLICATION_JSON);
+		ClientResponse response = builder.put(ClientResponse.class, strWrite);
+		
+	}
+	
+	
+	public Alumno getStudent(String token) {
+		return this.getStudentFromJson(this.getResponse(token, RESOURCESTUDENT));
 	}
 
 	public Data getAssignments(String token) {
-		WebResource recurso = this.client.resource(API_NOTITAS).path(RESOURSEASSIGMENTS);
-		Builder autorization = recurso.header("Authorization", PRETOKEN + token);
-		WebResource.Builder builder = autorization.accept(MediaType.APPLICATION_JSON);
-		ClientResponse response = builder.get(ClientResponse.class);
-		Data oneData = this.getAssignmentsFromJson(response);
-		return oneData;
+		return this.getAssignmentsFromJson(this.getResponse(token, RESOURSEASSIGMENTS));
+	}
+
+	public Alumno getStudentFromJson(ClientResponse oneJson) {
+		String strJson = oneJson.getEntity(String.class);
+		return gson.fromJson(strJson, Alumno.class);
+	}
+
+	public Data getAssignmentsFromJson(ClientResponse oneJson) {
+		String strJson = oneJson.getEntity(String.class);
+		return gson.fromJson(strJson, Data.class);
+	}
+
+	public String setStudentStr(String id, String firstName, String lastName, String githubUser){
+	    Alumno unAlumno = new Alumno(id, firstName, lastName, githubUser);
+		return gson.toJson(unAlumno);
+	}
+	public void setStudent(String token, String id, String firstName, String lastName, String githubUser){
+		this.putResponse(token, RESOURCESTUDENT, this.setStudentStr(id, firstName, lastName, githubUser));
 	}
 	
-	public Alumno getStudentFromJson(ClientResponse oneJson){
-		String strJson = oneJson.getEntity(String.class);
-	 	Gson gson = new Gson();
-    	Alumno unAlumno = gson.fromJson(strJson, Alumno.class);
-	    return unAlumno;
-	} 
-	public Data getAssignmentsFromJson(ClientResponse oneJson){
-		String strJson = oneJson.getEntity(String.class);
-	 	Gson gson = new Gson();
-	 	Data unaData = gson.fromJson(strJson, Data.class);
-	 	return unaData;
-	} 
-	
-/********* Otros Setters y Getters ********************************************************/	
 	public Client getClient() {
 		return client;
 	}
+
 	public void setClient(Client client) {
 		this.client = client;
 	}
-   
+
 }

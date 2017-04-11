@@ -16,7 +16,7 @@ public class LectorDeNotasViewModel {
 	private String token;
 
 	// Alumno
-	private int code;
+	private String code;
 	private String first_name;
 	private String last_name;
 	private String github_user;
@@ -47,6 +47,11 @@ public class LectorDeNotasViewModel {
 		this.assignments = this.assignmentsData.getAssignments();
 		this.assignments.forEach(one -> one.initLastGrade());
 	}
+	
+	public void actualizarEstudiante() {
+		this.oneService.setStudent(token, id, first_name, last_name, github_user);
+	}
+	
 
 /****************** Setters y Getters ******************************************/
 	public String getToken() {
@@ -57,11 +62,11 @@ public class LectorDeNotasViewModel {
 		this.token = token;
 	}
 
-	public int getCode() {
+	public String getCode() {
 		return code;
 	}
 
-	public void setCode(int code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 

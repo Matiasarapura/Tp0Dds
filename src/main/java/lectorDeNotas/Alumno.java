@@ -4,19 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Alumno {
-	private int code;
+	private String code;
 	private String first_name;
 	private String last_name;
 	private String github_user;
 	private List<Assignment> assigments = new ArrayList<>();
 
-	
+	public Alumno(){
+	}
 
-	public int getCode() {
+	public Alumno(String code, String first_name, String last_name, String github_user){
+		this.code = code;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.github_user = github_user;
+	}
+	
+	public String getCode() {
 		return code;
 	}
 
-	public void setCode(int code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 

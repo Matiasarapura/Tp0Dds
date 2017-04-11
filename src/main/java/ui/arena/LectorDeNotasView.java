@@ -45,6 +45,11 @@ public class LectorDeNotasView extends MainWindow<LectorDeNotasViewModel> {
 		.setCaption("Obtener notas")
 		.onClick(() -> getModelObject().obtenerNotas())
 		.setWidth(50);
+		new Button(columnaIzquierda)
+		.setCaption("Actualizar estudiante")
+		.onClick(() -> getModelObject().actualizarEstudiante())
+		.setWidth(50);
+		
 
 		// Centro
 		Panel columnaCentro = new Panel(mainPanel);
